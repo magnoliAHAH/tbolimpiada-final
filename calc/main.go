@@ -26,6 +26,7 @@ func main() {
 	var mins []elem
 	min := 1000
 	max := 0
+
 	for idx, val := range volumes {
 		if val <= min {
 			min = val
@@ -34,6 +35,7 @@ func main() {
 		if val >= max {
 			max = val
 		}
+
 	}
 
 	fmt.Println((max - mins[0].val) - 1)
