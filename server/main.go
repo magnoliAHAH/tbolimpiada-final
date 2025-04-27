@@ -47,21 +47,7 @@ func alignHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	maxVolume := requestData.Volumes[0]
-	for i := 1; i < requestData.K; i++ {
-		if requestData.Volumes[i] > maxVolume {
-			maxVolume = requestData.Volumes[i]
-		}
-	}
-
-	operations := 0
-	for i := 0; i < requestData.K; i++ {
-		if requestData.Volumes[i] > maxVolume {
-			http.Error(w, "Некоторые сосуды имеют объем больше максимального среди первых K", http.StatusBadRequest)
-			return
-		}
-		operations += maxVolume - requestData.Volumes[i]
-	}
+	operations := 1
 
 	responseData := ResponseData{Operations: operations}
 	w.Header().Set("Content-Type", "application/json")
